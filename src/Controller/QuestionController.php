@@ -10,4 +10,12 @@ class QuestionController
     {
         return new Response("Ask your question!");
     }
+
+    public function show($question): Response
+    {
+        return new Response(
+            ucwords(str_replace('-', ' ', $question))
+            . "? There could be your answer"
+        );
+    }
 }
