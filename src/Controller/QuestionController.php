@@ -9,7 +9,7 @@ class QuestionController extends AbstractController
 {
     public function homepage(): Response
     {
-        return new Response("Ask your question!");
+        return $this->render('question/homepage.html.twig');
     }
 
     public function show($question): Response
