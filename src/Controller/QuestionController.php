@@ -21,6 +21,7 @@ class QuestionController extends AbstractController
             "Many species of trees that grow near the equator can grow several meters per year",
             "Virtual reality and Augmented reality are ones of the most evolving technologies"
         ];
+        dump($question, $this);
         return $this->render(
             'question/show.html.twig',
             [
