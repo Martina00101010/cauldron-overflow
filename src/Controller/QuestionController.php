@@ -16,12 +16,12 @@ class QuestionController extends AbstractController
     {
         $answers = [
             "Theoretically, it would take just 45 hours on a Boeing 747 to fly around the Earth's circumference",
-            "The sun is white. It looks yellow because the Earth's atmosphere scatters blue light, \
+            "The sun is white. It looks yellow because the Earth's atmosphere scatters blue light, 
             so that the Sun colour is white minus blue, i.e. red plus green = yellow",
             "Many species of trees that grow near the equator can grow several meters per year",
             "Virtual reality and Augmented reality are ones of the most evolving technologies"
         ];
-        dump($question, $this);
+        dump($answers, $this); // to remember how to use dump
         return $this->render(
             'question/show.html.twig',
             [
