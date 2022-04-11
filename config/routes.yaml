@@ -9,3 +9,7 @@ app_question_show:
 app_comment_vote:
     path: /comments/{id}/vote/{isDirectionUp}
     controller: App\Controller\CommentController:commentVote
+    methods: [ POST ]
+    requirements:
+        id: '(?!0)[\d]{0,9}'
+        isDirectionUp: '[0-1]'
