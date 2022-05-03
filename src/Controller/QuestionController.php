@@ -9,7 +9,13 @@ class QuestionController extends AbstractController
 {
     public function homepage(): Response
     {
+        // indirect use of twig
         return $this->render('question/homepage.html.twig');
+
+        /* direct use of twig */
+        // first, declare Twig\Environment $twigEnvironment in function params, then:
+        // $htmlPage = $twigEnvironment->render('question/homepage.html.twig');
+        // return (new Response($htmlPage));
     }
 
     public function show($question): Response
