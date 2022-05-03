@@ -1,9 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block title %}Question: {{ question }}{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('js/question_show.js') }}"></script>
-{% endblock %}
 {% block body %}
     <div class="container">
         <div class="row">
