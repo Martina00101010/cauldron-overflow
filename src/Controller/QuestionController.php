@@ -5,6 +5,7 @@ namespace App\Controller;
 use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Cache\CacheInterface;
 
 class QuestionController extends AbstractController
 {
@@ -19,7 +20,7 @@ class QuestionController extends AbstractController
         // return (new Response($htmlPage));
     }
 
-    public function show($question, MarkdownParserInterface $markdownParser): Response
+    public function show($question, MarkdownParserInterface $markdownParser, CacheInterface $cache): Response
     {
         $answers = [
             "Theoretically, it would take `just 45 hours` on a Boeing 747 to fly around the Earth's circumference",
@@ -30,7 +31,10 @@ class QuestionController extends AbstractController
         ];
 //        dump($answers, $this); // to remember how to use dump
         $question = "What interesting facts **astonished** you most?";
-        $parsedQuestion = $markdownParser->transformMarkdown($question);
+        $parsedQuestion = $cache->get('markdown' . md5($question),
+            function () use ($markdownParser, $question) {
+                $markdownParser->transformMarkdown($question);
+        });
         return $this->render(
             'question/show.html.twig',
             [
