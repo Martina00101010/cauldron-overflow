@@ -12,10 +12,10 @@
                                 <img src="{{ asset('images/tisha.png') }}" width="100" height="100">
                             </div>
                             <div class="col">
-                                <h1 class="q-title-show">{{ question }}</h1>
+                                <h1 class="q-title-show">{{ question|raw }}</h1>
                                 <div class="q-display p-3">
                                     <i class="fa fa-quote-left mr-3"></i>
-                                    <p class="d-inline">What interesting facts astonished you most?</p>
+                                    <p class="d-inline">{{ question|raw }}</p>
                                     <p class="pt-4"><strong>--Tisha, the cat</strong></p>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                             <img src="{{ asset('images/tisha.png') }}" width="50" height="50">
                         </div>
                         <div class="mr-3 pt-2">
-                            {{ answer }}
+                            {{ answer|striptags|markdown }}
                             <p>-- Mallory</p>
                         </div>
                         <div class="vote-arrows flex-fill pt-2 js-vote-arrows" style="min-width: 90px;">
